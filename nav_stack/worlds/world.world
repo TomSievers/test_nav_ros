@@ -1,0 +1,182 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="bed_0">
+      <pose>2.7 0 0</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="plant_0">
+      <pose>3.5 1 0.55</pose>
+      <include>
+        <uri>model://plant_pot_white</uri>
+      </include>
+    </model>
+
+    <model name="cabinet_0">
+      <pose>3.5 1 0 0 0 -1.57</pose>
+      <include>
+        <uri>model://cabinet_ikea_malm_small</uri>
+      </include>
+    </model>
+
+    <model name="bed_1">
+      <pose>2.7 2 0</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="plant_1">
+      <pose>3.5 -1 0.55</pose>
+      <include>
+        <uri>model://plant_pot_white</uri>
+      </include>
+    </model>
+
+    <model name="cabinet_1">
+      <pose>3.5 -1 0 0 0 -1.57</pose>
+      <include>
+        <uri>model://cabinet_ikea_malm_small</uri>
+      </include>
+    </model>
+
+    <model name="bed_2">
+      <pose>2.7 -2 0</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed_3">
+      <pose>-2.7 0 0 0 0 3.14</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="plant_2">
+      <pose>-3.5 1 0.55</pose>
+      <include>
+        <uri>model://plant_pot_white</uri>
+      </include>
+    </model>
+
+    <model name="cabinet_2">
+      <pose>-3.5 1 0 0 0 1.57</pose>
+      <include>
+        <uri>model://cabinet_ikea_malm_small</uri>
+      </include>
+    </model>
+
+    <model name="bed_4">
+      <pose>-2.7 2 0 0 0 3.14</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="food_0">
+      <pose>-3.5 -1 0.6</pose>
+      <include>
+        <uri>model://pizza_box</uri>
+      </include>
+    </model>
+
+    <model name="drink_0">
+      <pose>-3.5 -1.4 0</pose>
+      <include>
+        <uri>model://milk</uri>
+      </include>
+    </model>
+
+    <model name="cabinet_3">
+      <pose>-3.5 -1 0 0 0 1.57</pose>
+      <include>
+        <uri>model://cabinet_ikea_malm_small</uri>
+      </include>
+    </model>
+
+    <model name="bed_5">
+      <pose>-2.7 -2 0 0 0 3.14</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+
+    <model name="chair_0">
+      <pose>3.05 -3.25 0 0 0 -2.31</pose>
+      <include>
+        <uri>model://chair_ikea_borje</uri>
+      </include>
+    </model>
+
+    <model name="chair_1">
+      <pose>0 -3.3 0 0 0 -3.13</pose>
+      <include>
+        <uri>model://chair_ikea_borje</uri>
+      </include>
+    </model>
+
+    <model name="chair_2">
+      <pose>-3 -3.1 0 0 0 2.23</pose>
+      <include>
+        <uri>model://chair_ikea_borje</uri>
+      </include>
+    </model>
+
+    <model name="wall_0">
+      <pose>4 0 0</pose>
+      <include>
+        <uri>model://wall_x_8</uri>
+      </include>
+    </model>
+
+    <model name="wall_1">
+      <pose>-4 0 0</pose>
+      <include>
+        <uri>model://wall_x_8</uri>
+      </include>
+    </model>
+
+    <model name="wall_2">
+      <pose>0 -4 0</pose>
+      <include>
+        <uri>model://wall_y_8</uri>
+      </include>
+    </model>
+
+    <model name="wall_3">
+      <pose>-2.5 4 0</pose>
+      <include>
+        <uri>model://wall_y_3</uri>
+      </include>
+    </model>
+
+    <model name="wall_4">
+      <pose>2.5 4 0</pose>
+      <include>
+        <uri>model://wall_y_3</uri>
+      </include>
+    </model>
+
+    <model name="wall_5">
+      <pose>0 6 0</pose>
+      <include>
+        <uri>model://wall_y_8</uri>
+      </include>
+    </model>
+
+  </world>
+</sdf>

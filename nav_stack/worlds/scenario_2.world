@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="walls">
+      <pose>-4 -1 0</pose>
+      <include>
+        <uri>model://cross_section</uri>
+      </include>
+    </model>
+
+    <model name="moving_object_0">
+      <pose> -13 -2 0 0 0 0</pose>
+      <include>
+        <uri>model://human</uri>
+      </include>
+      <plugin name="wor_model_moving_object_0" filename="libwor_model_moving_object.so">
+      <instructions>
+        <instruction>
+          <velocity>1.2</velocity>
+          <seconds>25</seconds>
+          <angle>0</angle>
+        </instruction>
+        <instruction>
+          <velocity>1.2</velocity>
+          <seconds>25</seconds>
+          <angle>180</angle>
+        </instruction>
+      </instructions>
+      </plugin>
+    </model>
+
+    <model name="moving_object_1">
+      <pose> -3 7 0 0 0 0</pose>
+      <include>
+        <uri>model://human</uri>
+      </include>
+      <plugin name="wor_model_moving_object_1" filename="libwor_model_moving_object.so">
+      <instructions>
+        <instruction>
+          <velocity>1.2</velocity>
+          <seconds>28</seconds>
+          <angle>270</angle>
+        </instruction>
+        <instruction>
+          <velocity>1.2</velocity>
+          <seconds>28</seconds>
+          <angle>90</angle>
+        </instruction>
+      </instructions>
+      </plugin>
+    </model>
+
+    <model name="moving_object_2">
+      <pose> -4 -9 0 0 0 0</pose>
+      <include>
+        <uri>model://human</uri>
+      </include>
+
+      <plugin name="wor_model_moving_object_2" filename="libwor_model_moving_object.so">
+        <instructions>
+          <instruction>
+            <velocity>0</velocity>
+            <seconds>13</seconds>
+            <angle>90</angle>
+          </instruction>
+          <instruction>
+            <velocity>1.4</velocity>
+            <seconds>28</seconds>
+            <angle>90</angle>
+          </instruction>
+          <instruction>
+            <velocity>1.4</velocity>
+            <seconds>28</seconds>
+            <angle>276</angle>
+          </instruction>
+        </instructions>
+      </plugin>
+    </model>
+  </world>
+</sdf>

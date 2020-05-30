@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="robot" default="$(optenv ROBOT !!NO_ROBOT_SET!!)"/>
+
+	<!-- send cob urdf to param server -->
+  	<!-- Changed this to use cob_sim_project_bringup package OwO -->
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find nav_stack)/robots/$(arg robot).urdf.xacro'" />
+
+</launch>

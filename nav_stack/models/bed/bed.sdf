@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+
+  <model name="bed">
+    <link name="base_link">
+      <inertial>
+        <mass>20.0</mass>
+        <inertia>
+          <ixx>1.0</ixx>
+          <ixy>0.0</ixy> 
+          <ixz>0.0</ixz> 
+          <iyy>1.0</iyy> 
+          <iyz>0.0</iyz> 
+          <izz>1.0</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://bed/bed.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://bed/bed.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <!-- <gazebo>
+    <static>true</static>
+  </gazebo> -->
+</sdf>
+

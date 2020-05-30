@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="default">
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <model name="walls">
+            <pose>0 1 0</pose>
+            <static>true</static>
+            <include>
+                <uri>model://scenario_3_walls</uri>
+            </include>
+        </model>
+
+        <model name="moving_object_1">
+            <pose>-12 0 0 0 0 0</pose>
+            <include>
+                <uri>model://human</uri>
+            </include>
+            <plugin name="wor_model_moving_object" filename="libwor_model_moving_object.so">
+                <instructions>
+                    <instruction>
+                        <velocity>2</velocity>
+                        <seconds>14</seconds>
+                        <angle>0</angle>
+                    </instruction>
+                    <instruction>
+                        <velocity>2</velocity>
+                        <seconds>2</seconds>
+                        <angle>45</angle>
+                    </instruction>
+                    <instruction>
+                        <velocity>2</velocity>
+                        <seconds>5</seconds>
+                        <angle>0</angle>
+                    </instruction>
+                    <instruction>
+                        <velocity>2</velocity>
+                        <seconds>2</seconds>
+                        <angle>315</angle>
+                    </instruction>
+                    <instruction>
+                        <velocity>2</velocity>
+                        <seconds>10</seconds>
+                        <angle>0</angle>
+                    </instruction>
+                </instructions>
+            </plugin>
+        </model>
+    </world>
+</sdf>

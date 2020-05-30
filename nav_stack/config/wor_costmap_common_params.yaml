@@ -1,0 +1,63 @@
+publish_frequency: 10.0
+footprint: [[0.4,0.0],[0.35,0.35],[-0.2,0.4],[-0.45,0.0],[-0.2,-0.4],[0.35,-0.35]]
+
+
+transform_tolerance: 0.4 # default: 0.2
+
+#
+# configure the static layer plugin
+#
+static:
+
+  unknown_cost_value: 0 # default: 0
+
+  lethal_cost_threshold: 100 # default: 100
+
+  map_topic: map # default: "map"
+
+static_layer:
+
+  unknown_cost_value: 0 # default: 0
+
+  lethal_cost_threshold: 100 # default: 100
+
+  map_topic: map # default: "map"
+
+obstacles:
+  observation_sources: laser_scan_front laser_scan_left laser_scan_right
+
+  # Parameters of the source: laser_scan_front
+  laser_scan_front:
+    sensor_frame: base_laser_front_link # The frame of the origin of the sensor, default: ""
+    topic: /base_laser_front/scan       # The topic on which sensor data comes in for this source, default: source_name
+    data_type: LaserScan                # The data type associated with the topic, default: "PointCloud"
+    marking: true                       # Whether or not this observation is used to mark obstacles, default: true
+    clearing: true                      # Whether or not this observation is used to clear out freespace, default: false
+
+  # Parameters of the source: laser_scan_left
+  laser_scan_left:
+    sensor_frame: base_laser_left_link  # The frame of the origin of the sensor, default: ""
+    topic: /base_laser_left/scan        # The topic on which sensor data comes in for this source, default: source_name
+    data_type: LaserScan                # The data type associated with the topic, default: "PointCloud"
+    marking: true                       # Whether or not this observation is used to mark obstacles, default: true
+    clearing: true                      # Whether or not this observation is used to clear out freespace, default: false
+
+  # Parameters of the source: laser_scan_right
+  laser_scan_right:
+    sensor_frame: base_laser_right_link # The frame of the origin of the sensor, default: ""
+    topic: /base_laser_right/scan       # The topic on which sensor data comes in for this source, default: source_name
+    data_type: LaserScan                # The data type associated with the topic, default: "PointCloud"
+    marking: true                       # Whether or not this observation is used to mark obstacles, default: true
+    clearing: true                      # Whether or not this observation is used to clear out freespace, default: false
+
+  obstacle_range: 10.0
+
+  raytrace_range: 5.5
+
+  map_type: costmap
+
+  unknown_threshold: 2
+
+  mark_threshold: 0
+
+  publish_voxel_map: true

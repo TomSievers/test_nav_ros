@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="default">
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <model name="walls">
+            <pose>-2.5 0 0</pose>
+            <include>
+                <uri>model://scenario_1_walls</uri>
+            </include>
+        </model>
+
+        <model name="moving_object_1">
+            <pose>3.0 -3.25 0 0 0 0</pose>
+            <include>
+                <uri>model://human</uri>
+            </include>
+
+            <plugin name="wor_model_moving_object_1" filename="libwor_model_moving_object.so">
+                <instructions>
+                    <instruction>
+                        <velocity>1</velocity>
+                        <seconds>28</seconds>
+                        <angle>90</angle>
+                    </instruction>
+                    <instruction>
+                        <velocity>1</velocity>
+                        <seconds>28</seconds>
+                        <angle>270</angle>
+                    </instruction>
+                </instructions>
+            </plugin>
+        </model>
+
+        <model name="moving_object_2">
+            <pose>1.5 3.25 0 0 0 0</pose>
+            <include>
+                <uri>model://human</uri>
+            </include>
+
+            <plugin name="wor_model_moving_object_2" filename="libwor_model_moving_object.so">
+                <instructions>
+                    <instruction>
+                        <velocity>1</velocity>
+                        <seconds>28</seconds>
+                        <angle>270</angle>
+                    </instruction>
+                    <instruction>
+                        <velocity>1</velocity>
+                        <seconds>28</seconds>
+                        <angle>90</angle>
+                    </instruction>
+                </instructions>
+            </plugin>
+        </model>
+
+    </world>
+</sdf>
