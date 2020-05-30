@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="walls">
+      <pose>0 0 0</pose>
+      <include>
+        <uri>model://Hospital_floor_walls</uri>
+      </include>
+    </model>
+
+    <model name="bed1">
+      <pose>-4.5 6 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed2">
+      <pose>-10.5 12 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed3">
+      <pose>-10.5 6 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed4">
+      <pose>-4.5 12 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+
+
+     <model name="bed1">
+      <pose>-4.5 -9 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed2">
+      <pose>-10.5 -3 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed3">
+      <pose>-10.5 -9 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed4">
+      <pose>-4.5 -3 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+
+
+    <model name="bed1">
+      <pose>-19.9 9 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed2">
+      <pose>-19.9 15 0 0 0 1.5</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed1">
+      <pose>-15.2 19.7 0 0 0 3.1</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+
+    <model name="bed2">
+      <pose>-9.2 19.7 0 0 0 3.1</pose>
+      <include>
+        <uri>model://bed</uri>
+      </include>
+    </model>
+	<plugin filename="libcollision_map_creator.so" name="collision_map_creator"/>
+  </world>
+</sdf>

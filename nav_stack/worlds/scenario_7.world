@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="default">
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <model name="walls">
+            <pose>-4 11.5 0</pose>
+            <static>true</static>
+            <include>
+                <uri>model://four_blocks_surrounded</uri>
+            </include>
+        </model>
+
+        <model name="obstacle">
+            <pose>-4.35 8 0</pose>
+            <static>true</static>
+            <include>
+                <uri>model://wall_y_3</uri>
+            </include>
+        </model>
+
+    </world>
+</sdf>

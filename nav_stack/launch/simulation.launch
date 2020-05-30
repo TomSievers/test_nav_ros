@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- TODO: Move database from previous group to current project -->
+
+	<arg name="robot" default="cob4-25"/>
+	<arg name="robot_env" value="empty"/> <!-- Environment used by simulation -->
+    <arg name="robot_x" default="0"/>
+    <arg name="robot_y" default="0"/>
+    <arg name="robot_yaw" default="0"/>
+    <arg name="map_file" default="$(find nav_stack)/maps/scenario_1.yaml"/> <!-- Environment used by robot belief -->
+    <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/>
+    <arg name="terminal_command" default="gnome-terminal --command"/> <!-- The command to open a terminal new terminal with specific command -->
+    <arg name="world" default="scenario_1"/>
+    <arg name="initial_config" default=""/>
+
+    <arg name="visualization" default="true"/>
+    <arg name="ui" default="true"/>
+    <arg name="base_nav" default="true"/>
+    <arg name="arm_nav" default="true"/>
+    <arg name="old_code" default="true"/>
+    <arg name="new_code" default="false"/>
+    
+
+    <!-- Start robot sim in gazebo using the world -->
+    <group if="$(arg visualization)">
+        <env name="GAZEBO_MODEL_PATH" value="$(find nav_stack)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+            <arg name="world_name" value="$(find nav_stack)/worlds/$(arg world).world"/>
+            <arg name="paused" value="false"/>
+            <arg name="use_sim_time" value="true"/>
+            <arg name="gui" value="true"/>
+            <arg name="recording" value="false"/>
+            <arg name="debug" value="false"/>
+            <arg name="verbose" value="true" />
+        </include>
+
+        <node pkg="rviz" type="rviz" name="$(anon rviz)" args="-d $(find nav_stack)/rviz/rviz.rviz" respawn="false" output="screen"/>
+
+        <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.1 $(arg initial_config) -wait $(arg robot_env)" respawn="false" output="screen" />
+    </group>
+
+	<!-- Start robot wih configuration -->
+    <group>
+        <!-- upload default configuration parameters -->
+        <include file="$(find nav_stack)/robots/cob4-wor.xml" >
+            <arg name="sim" value="true" />
+        </include>
+
+        <!-- upload default configuration parameters -->
+        <include file="$(find cob_default_env_config)/upload_navigation_goals.launch">
+            <arg name="robot_env" value="$(arg robot_env)" />
+        </include>
+
+        <include file="$(find cob_default_env_config)/upload_object_locations.launch">
+            <arg name="robot_env" value="$(arg robot_env)" />
+        </include>
+
+        <!-- spawn environment and start environment-specific nodes -->
+        <include file="$(find cob_gazebo_worlds)/launch/$(arg robot_env).xml">
+            <arg name="robot_env" value="$(arg robot_env)" />
+        </include>
+    </group>
+
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen" />
+    <include file="$(find nav_stack)/launch/amcl.launch"/>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <param name="controller_frequency" value="100"/>
+
+        <!-- Use the dwa local planner for the PR2 -->
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+        <!--- load common configuration files -->
+        <rosparam file="$(find nav_stack)/config/wor_costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find nav_stack)/config/wor_costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+        <!--- load global navigation specific parameters -->
+        <rosparam file="$(find nav_stack)/config/local_costmap_params.yaml" command="load" ns="local_costmap"/>
+        <rosparam file="$(find nav_stack)/config/global_costmap_params.yaml" command="load" ns="global_costmap"/>
+
+        <!--- load planner parameters -->
+        <rosparam file="$(arg pkg_nav_config)/robots/cob4/nav/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(arg pkg_nav_config)/robots/cob4/nav/dwa_local_planner.yaml" command="load" ns="DWAPlannerROS" />
+        
+        <!--- load planner parameters -->
+        <param name="trinary_costmap" type="bool" value="false" />
+        <param name="subscribe_to_updates" type="bool" value="true" />
+
+        <param name="global_costmap/static_layer/trinary_costmap" type="bool" value="false"/>
+        <param name="global_costmap/static_layer/subscribe_to_updates" type="bool" value="true"/>
+    <!--    <param name="global_costmap/always_send_full_costmap" type="bool" value="true"/>-->
+
+    </node>
+
+</launch>

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="default">
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <model name="walls">
+            <pose>-8 -6 0</pose>
+            <static>true</static>
+            <include>
+                <uri>model://s6-hall</uri>
+            </include>
+        </model>
+
+        <model name="moving_object_1">
+            <pose>-8 -3 0 0 0 0</pose>
+            <include>
+                <uri>model://human</uri>
+            </include>
+            <plugin name="wor_model_moving_object" filename="libwor_model_moving_object.so">
+                <instructions>
+                    <instruction>
+                        <velocity>0</velocity>
+                        <seconds>14</seconds>
+                        <angle>0</angle>
+                    </instruction>
+                </instructions>
+            </plugin>
+        </model>
+        
+        <plugin filename="libcollision_map_creator.so" name="collision_map_creator"/>
+    </world>
+</sdf>
