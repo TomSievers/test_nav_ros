@@ -60,7 +60,6 @@ namespace object_layer
             }
             
         }
-        
     }
 
 } // end namespace
