@@ -1,0 +1,30 @@
+
+<launch>
+    <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/>
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <param name="controller_frequency" value="100"/>
+
+        <!-- Use the dwa local planner for the PR2 -->
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+        <!--- load common configuration files -->
+        <rosparam file="$(find nav_stack)/config/common_costmap_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find nav_stack)/config/common_costmap_params.yaml" command="load" ns="local_costmap" />
+
+        <!--- load global navigation specific parameters -->
+        <rosparam file="$(find nav_stack)/config/local_costmap_params.yaml" command="load" ns="local_costmap"/>
+        <rosparam file="$(find nav_stack)/config/global_costmap_params.yaml" command="load" ns="global_costmap"/>
+
+        <!--- load planner parameters -->
+        <rosparam file="$(arg pkg_nav_config)/robots/cob4/nav/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(arg pkg_nav_config)/robots/cob4/nav/dwa_local_planner.yaml" command="load" ns="DWAPlannerROS" />
+        
+        <!--- load planner parameters -->
+        <param name="trinary_costmap" type="bool" value="false" />
+        <param name="subscribe_to_updates" type="bool" value="true" />
+
+        <param name="global_costmap/static_layer/trinary_costmap" type="bool" value="false"/>
+        <param name="global_costmap/static_layer/subscribe_to_updates" type="bool" value="true"/>
+    </node>
+
+</launch>
